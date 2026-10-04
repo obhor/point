@@ -7,7 +7,13 @@ export function loadImage(src: string): Promise<HTMLImageElement> {
   });
 }
 
-/** Downscale an image to a max dimension, returning a dataURL (jpeg). */
+function outputMime(type: string): string {
+  if (type === "image/png" || type === "image/gif") return "image/png";
+  if (type === "image/webp") return "image/webp";
+  return "image/jpeg";
+}
+
+/** Downscale an image to a max dimension, preserving its format (lossless for PNG). */
 export function downscaleImage(
   file: Blob,
   maxDim = 2560,
@@ -27,7 +33,7 @@ export function downscaleImage(
       const ctx = canvas.getContext("2d")!;
       ctx.drawImage(img, 0, 0, width, height);
       URL.revokeObjectURL(url);
-      resolve(canvas.toDataURL("image/jpeg", quality));
+      resolve(canvas.toDataURL(outputMime(file.type), quality));
     };
     img.onerror = () => {
       URL.revokeObjectURL(url);
