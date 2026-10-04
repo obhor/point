@@ -1,36 +1,55 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Point
 
-## Getting Started
+Show AI what you mean. Point is a canvas where you upload images and point,
+annotate, sketch, and arrange them into a visual reference an AI can read.
 
-First, run the development server:
+No LLM calls, no backend — everything is client-side and saved to your browser.
+
+## Features
+
+- **Infinite canvas** — pan, zoom, select, multi-select, resize, rotate, delete, undo/redo
+- **13 tools** — select, point, rectangle, ellipse, arrow, line, freehand, text, numbered marker, highlight, blur, comment, eraser (each with a keyboard shortcut)
+- **Signature Point tool** — press `P`, click to drop an auto-numbered ①②③ marker, type a label inline
+- **Images as objects** — upload, paste, or drag-drop PNG/JPG/WEBP/GIF; place many on one canvas
+- **AI Context** — deterministic, structured text summary of everything on the canvas
+- **Copy for AI** — copies the image + text to your clipboard in one click
+- **Export** — PNG, JPG, and JSON project files
+- **Local persistence** — projects live in IndexedDB, nothing leaves your machine
+
+## Getting started
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Production
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+npm run start
+```
 
-## Learn More
+## Stack
 
-To learn more about Next.js, take a look at the following resources:
+Next.js (App Router), TypeScript, Tailwind CSS v4, shadcn/ui, Konva / react-konva.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Keyboard shortcuts
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+| Key | Tool |
+| --- | --- |
+| `V` | Select |
+| `P` | Point |
+| `N` | Numbered marker |
+| `R` | Rectangle |
+| `O` | Ellipse |
+| `A` | Arrow |
+| `L` | Line |
+| `D` | Freehand |
+| `T` | Text |
+| `H` | Highlight |
+| `B` | Blur |
+| `C` | Comment |
+| `E` | Eraser |
